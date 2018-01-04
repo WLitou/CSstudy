@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GradeCheck
 {
@@ -15,6 +16,23 @@ namespace GradeCheck
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "ここの文字列がファイルになります。";
+            try
+            {
+                using (StreamWriter writer = new StreamWriter
+                    ("Text.txt", false, encoding.default))
+                {
+                    writer.Write(textBox1);
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }
